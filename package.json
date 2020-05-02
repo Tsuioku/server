@@ -1,0 +1,12 @@
+{
+    "name": "server",
+    "version": "1.0.0",
+    "main": "index.js",
+    "repository": "git@github.com:Tsuioku/server.git",
+    "author": "The tsuioku team",
+    "license": "None",
+    "devDependencies": {
+        "serverless": "^1.69.0",
+        "serverless-offline": "^6.1.4"
+    }
+}

@@ -1,0 +1,24 @@
+service:
+  name: tsuioku
+
+provider:
+  name: aws
+  runtime: nodejs10.x
+  region: ap-northeast-1
+  stage: ${opt:stage, dev}
+
+functions:
+  tsuioku:
+    handler: handler.hello
+    events:
+      - http:
+          path: api
+          method: get
+          cors: true
+      - http:
+          path: api
+          method: post
+          cors: true
+
+plugins:
+  - serverless-offline
