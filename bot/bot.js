@@ -4,7 +4,6 @@ const client = new line.Client({
   channelAccessToken: process.env.ACCESSTOKEN
 });
 
-
 exports.main = async (event) => {
   // 署名検証
   const signature = crypto
