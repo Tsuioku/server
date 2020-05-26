@@ -10,6 +10,7 @@ exports.main = async (event) => {
   // const type = data.type;
   const ID = data.id;
   const memory = data.memory;
+  const deliveryDate = data.deliveryDate;
 
   const UUID = uuidv4().split('-').join('');
 
@@ -18,7 +19,8 @@ exports.main = async (event) => {
     Item: {
       ID: ID,
       UUID: UUID,
-      memory: memory
+      memory: memory,
+      deliveryDate: deliveryDate
     }
   };
   await new Promise((resolve) => {

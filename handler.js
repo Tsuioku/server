@@ -11,9 +11,6 @@ module.exports.hello = async event => {
   let res;
 
   switch (path) {
-    case '/bot':
-      res = require('./bot/bot').main(event);
-      break;
     case '/capsule':
       switch (method) {
         case 'DELETE':
@@ -28,6 +25,6 @@ module.exports.hello = async event => {
       }
       break;
   }
-
+  console.log(res);
   return res;
 };
