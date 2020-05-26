@@ -1,4 +1,8 @@
 const AWS = require('aws-sdk');
+const {
+  v4: uuidv4
+} = require('uuid');
+
 const dynamoDocument = new AWS.DynamoDB.DocumentClient();
 
 exports.main = async (event) => {
