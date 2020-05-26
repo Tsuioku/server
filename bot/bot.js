@@ -26,6 +26,7 @@ exports.main = async (event) => {
           message = await messageFunc(lineEvent);
           break;
       }
+      console.log(message);
       // メッセージを返信
       if (message != undefined) {
         await client
