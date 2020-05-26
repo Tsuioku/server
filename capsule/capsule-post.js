@@ -1,7 +1,7 @@
-exports.main = async (event) => {
-  const AWS = require('aws-sdk');
-  const dynamoDocument = new AWS.DynamoDB.DocumentClient();
+const AWS = require('aws-sdk');
+const dynamoDocument = new AWS.DynamoDB.DocumentClient();
 
+exports.main = async (event) => {
   const data = JSON.parse(event.body);
   // const type = data.type;
   const ID = data.id;
