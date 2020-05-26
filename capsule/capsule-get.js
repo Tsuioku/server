@@ -8,7 +8,7 @@ const dynamoDocument = new AWS.DynamoDB.DocumentClient();
 exports.main = async (event) => {
 
   const params = event.queryStringParameters;
-  const type = params.type;
+  // const type = params.type;
   const id = params.id;
 
   const param = {
