@@ -63,4 +63,5 @@ const messageFunc = async (e) => {
         break;
     }
   }
+  return message;
 };
