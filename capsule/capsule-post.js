@@ -8,7 +8,7 @@ const dynamoDocument = new AWS.DynamoDB.DocumentClient();
 exports.main = async (event) => {
   const data = JSON.parse(event.body);
   // const type = data.type;
-  const ID = data.id;
+  const id = data.id;
   const memory = data.memory;
   const deliveryDate = data.deliveryDate;
 
@@ -17,7 +17,7 @@ exports.main = async (event) => {
   const param = {
     TableName: 'omoideCapsuleTable',
     Item: {
-      ID: ID,
+      ID: id,
       UUID: UUID,
       memory: memory,
       deliveryDate: deliveryDate
