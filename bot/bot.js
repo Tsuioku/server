@@ -28,7 +28,7 @@ exports.main = async (event) => {
       }
       // メッセージを返信
       if (message != undefined) {
-        client
+        await client
           .replyMessage(body.events[0].replyToken, message)
           .then((response) => {
             const lambdaResponse = {
