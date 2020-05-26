@@ -8,9 +8,13 @@ const dynamoDocument = new AWS.DynamoDB.DocumentClient();
 exports.main = async (event) => {
   const data = JSON.parse(event.body);
   // const type = data.type;
-  const id = data.id;
-  const memory = data.memory;
-  const deliveryDate = data.deliveryDate;
+  const {
+    id,
+    title,
+    description,
+    registeredDate,
+    deliveryDate
+  } = data;
 
   const UUID = uuidv4().split('-').join('');
 
@@ -19,7 +23,9 @@ exports.main = async (event) => {
     Item: {
       ID: id,
       UUID: UUID,
-      memory: memory,
+      title: title,
+      description: description,
+      registeredDate: registeredDate,
       deliveryDate: deliveryDate
     }
   };
