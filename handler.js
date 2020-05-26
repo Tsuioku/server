@@ -1,17 +1,33 @@
 'use strict';
 
-module.exports.hello = async (event) => {
-    return {
-        statusCode: 200,
-        body: JSON.stringify({
-                message: 'Go Serverless v1.0! Your function executed successfully!',
-                input: event,
-            },
-            null,
-            2
-        ),
-    };
+module.exports.hello = async event => {
 
-    // Use this code if you don't use the http event with the LAMBDA-PROXY integration
-    // return { message: 'Go Serverless v1.0! Your function executed successfully!', event };
+  console.log(event);
+
+  const path = event.path;
+  const method = event.httpMethod;
+  console.log(path, method);
+
+  let res;
+
+  switch (path) {
+    case '/bot':
+      res = require('./bot/bot').main(event);
+      break;
+    case '/capsule':
+      switch (method) {
+        case 'DELETE':
+          res = require('./capsule/capsule-delete').main(event);
+          break;
+        case 'GET':
+          res = require('./capsule/capsule-get').main(event);
+          break;
+        case 'POST':
+          res = require('./capsule/capsule-post').main(event);
+          break;
+      }
+      break;
+  }
+
+  return res;
 };
