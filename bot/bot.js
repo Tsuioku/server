@@ -29,19 +29,21 @@ exports.main = async (event) => {
       console.log(message);
       // メッセージを返信
       if (message != undefined) {
-        await client
-          .replyMessage(body.events[0].replyToken, message)
-          .then((response) => {
-            const lambdaResponse = {
-              statusCode: 200,
-              headers: {
-                'X-Line-Status': 'OK'
-              },
-              body: '{"result":"completed"}',
-            };
-            return lambdaResponse;
-          })
-          .catch((err) => console.log(err));
+        try {
+          const res = await client
+            .replyMessage(body.events[0].replyToken, message);
+          console.log(res);
+          const lambdaResponse = {
+            statusCode: 200,
+            headers: {
+              'X-Line-Status': 'OK'
+            },
+            body: '{"result":"completed"}',
+          };
+          return lambdaResponse;
+        } catch (e) {
+          throw new Error(e);
+        }
       }
     });
   }
