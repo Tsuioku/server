@@ -17,6 +17,18 @@ exports.main = async (event) => {
     image
   } = data;
 
+  if (description.length > 200 || title.length > 15) {
+    const response = {
+      statusCode: 401,
+      body: JSON.stringify('sorehasou'),
+      headers: {
+        'Access-Control-Allow-Origin': 'https://peacebox.sugokunaritai.dev',
+        'Access-Control-Allow-Credentials': true
+      }
+    };
+    return response;
+  }
+
   const UUID = uuidv4().split('-').join('');
 
   const param = {
