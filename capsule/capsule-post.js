@@ -48,7 +48,8 @@ exports.main = async (event) => {
       Body: decodedImage,
       Bucket: 'capsule-image',
       Key: [UUID, 'jpeg'].join('.'),
-      ContentType: 'image/jpeg'
+      ContentType: 'image/jpeg',
+      ACL: 'public-read'
     };
 
     const s3 = new AWS.S3();
